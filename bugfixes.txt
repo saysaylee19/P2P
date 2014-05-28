@@ -1,0 +1,57 @@
+
+
+
+1.Change ip and port in peer1
+2.Handle statusCode error...in Central Server.py
+In lookup()
+global statusCode,statusPhrase
+    statusCode=404
+    statusPhrase=''
+3.add list of files when peer joins the system
+In listalllre():
+return o	
+Comment listallre in main()
+In menu option 0..
+allRFC=listalllre()
+str(allRFC)
+
+4.Manage file additions on registering
+In AddPeerlist in Central Server
+y=list()
+y = rfclist[1]
+y=y.translate(None,"[] '")
+y=y.split(',',1)
+	
+Change the foll:
+#for i,j in zip(y[::2],y[1::2]): is changed to following:
+        for i in y:
+		il.insert(0,IndexRecord(i,'NewFile',reqlist[3],count))	
+	
+
+5.check_output replace by Popen
+      	dat=subprocess.Popen(['date'],stdout=subprocess.PIPE)
+        datt=dat.communicate()
+        date=datt[0]
+        #uname=subprocess.check_output(['uname'])
+        		una=subprocess.check_output(['uname'],stdout=subprocess.PIPE)
+        unam=una.communicate()
+        uname=unam[0]
+        
+
+6.Manage o/p in file
+remove fdata while writing to file 
+Changed the writing sequence
+
+7.File Not found error fixing
+givfile send(fdata) in the 404 case
+requestrfc print reply
+
+8.fix for pdf/txt's:
+In listalllre()
+if files.endswith(".txt") or files.endswith(".pdf"):
+also in givfile()
+    #fname=rfcno[2]+".txt" or
+    fname=rfcno[2]+".pdf"
+9.fixed AddPeer
+to insert index record on initial join up
+	
